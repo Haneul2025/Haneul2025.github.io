@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 내게 주신 하나님의 말씀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: linear-gradient(to bottom, #f5f0e8 0%, #e8dcc8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: linear-gradient(to bottom, #f5f0e8 0%, #f0e8d8 30%, #e8dcc8 60%, #d8ccb8 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+
+        .logo {
+            color: #5b8fc7;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .year-badge {
+            display: inline-block;
+            border: 3px solid #333;
+            border-radius: 50px;
+            padding: 8px 35px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .main-title {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 60px;
+            color: #222;
+        }
+
+        .mountain-bg {
+            position: relative;
+            min-height: 250px;
+            background: linear-gradient(to bottom, transparent 0%, #c8bcac 100%);
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 120px;
+        }
+
+        .mountain-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40%;
+            height: 80px;
+            background: linear-gradient(135deg, transparent 50%, #a8a08c 50%);
+            opacity: 0.4;
+        }
+
+        .mountain-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45%;
+            height: 100px;
+            background: linear-gradient(-135deg, transparent 50%, #a8a08c 50%);
+            opacity: 0.4;
+        }
+
+        .content {
+            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            padding: 18px 30px;
+            background: linear-gradient(to bottom, #6b5d4f 0%, #4a3f35 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .link-text {
+            font-size: 14px;
+            color: #8b7355;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .link-text:hover {
+            color: #6b5d4f;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+
+            .year-badge {
+                font-size: 20px;
+                padding: 6px 30px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .btn-primary {
+                font-size: 16px;
+                padding: 16px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .logo {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">교회한국디다이</div>
+            <div class="year-badge">2025</div>
+            <h1 class="main-title">
+                내게 주신<br>
+                하나님의<br>
+                말씀
+            </h1>
+        </div>
+        
+        <div class="mountain-bg">
+            <div class="mountain">
+                <div class="mountain-left"></div>
+                <div class="mountain-right"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <p class="subtitle">지인들과 함께</p>
+            <p class="description">내게 주신 말씀을 나눠보세요!</p>
+            
+            <button class="btn-primary" onclick="alert('랜덤 말씀을 불러오는 기능입니다.')">
+                랜덤 말씀 뽑기
+            </button>
+            
+            <div class="link-text" onclick="alert('녹가 페이지로 이동합니다.')">
+                녹가 이 페이지를 만들었나요?
+            </div>
+        </div>
+    </div>
+</body>
+</html>
