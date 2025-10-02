@@ -212,6 +212,56 @@ body {
     margin-bottom: 40px;
 }
 
+/* 이미지 저장을 위한 1080x1920 최적화 스타일 */
+@media screen and (width: 1080px) and (height: 1920px) {
+    .result-container {
+        padding: 150px 80px 100px;
+        justify-content: flex-start;
+    }
+    
+    .result-card {
+        max-width: 920px;
+        width: 100%;
+        margin: 0 auto 80px;
+        padding: 100px 80px;
+        border-radius: 40px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+    }
+    
+    .result-year {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .result-title {
+        font-size: 42px;
+        letter-spacing: 6px;
+        margin-bottom: 60px;
+    }
+    
+    .verse-content {
+        font-size: 38px;
+        line-height: 1.9;
+        margin: 80px 0;
+        font-weight: 400;
+    }
+    
+    .verse-reference {
+        font-size: 24px;
+        margin-top: 60px;
+    }
+    
+    .result-logo {
+        font-size: 20px;
+        margin-top: 60px;
+        opacity: 0.7;
+    }
+    
+    .button-container {
+        display: none !important;
+    }
+}
+
 .result-header {
     text-align: center;
     margin-bottom: 40px;
