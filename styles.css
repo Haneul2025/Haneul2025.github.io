@@ -290,7 +290,7 @@ body {
 
 .result-container.saving-mode .blur-overlay,
 .result-container.saving-mode .blur-circle {
-    display: block;
+    display: none !important;
 }
 
 .result-header {
