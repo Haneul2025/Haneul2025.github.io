@@ -4,36 +4,554 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>하늘대학부 리더십 말씀 선물</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: linear-gradient(to bottom, #f5f0e8 0%, #e8dcc8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* 페이지 전환 */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        
+        /* 메인 페이지 스타일 */
+        .container {
+            background: linear-gradient(to bottom, #f5f0e8 0%, #f0e8d8 30%, #e8dcc8 60%, #d8ccb8 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+        .logo {
+            color: #5b8fc7;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .year-badge {
+            display: inline-block;
+            border: 3px solid #333;
+            border-radius: 50px;
+            padding: 8px 35px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .main-title {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 60px;
+            color: #222;
+        }
+        .mountain-bg {
+            position: relative;
+            min-height: 250px;
+            background: linear-gradient(to bottom, transparent 0%, #c8bcac 100%);
+        }
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 120px;
+        }
+        .mountain-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40%;
+            height: 80px;
+            background: linear-gradient(135deg, transparent 50%, #a8a08c 50%);
+            opacity: 0.4;
+        }
+        .mountain-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45%;
+            height: 100px;
+            background: linear-gradient(-135deg, transparent 50%, #a8a08c 50%);
+            opacity: 0.4;
+        }
+        .content {
+            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .description {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            padding: 18px 30px;
+            background: linear-gradient(to bottom, #6b5d4f 0%, #4a3f35 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        /* 로딩 페이지 스타일 */
+        .loading-container {
+            background: linear-gradient(135deg, #e8f4f8 0%, #b8d4e8 100%);
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        .wave-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+        }
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: #c8a882;
+            border-radius: 50% 50% 0 0;
+            opacity: 0.6;
+        }
+        .wave-2 {
+            background: #d4b896;
+            height: 150px;
+            opacity: 0.8;
+            animation: wave 3s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .tag-card {
+            background: #fefdfb;
+            border: 3px solid #d4b896;
+            border-radius: 20px 20px 30px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            padding: 60px 40px;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+        .tag-hole {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #b8b8b8;
+            border-radius: 50%;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .tag-string {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 40px;
+            background: #c8b896;
+            border-radius: 2px;
+        }
+        .book-icon {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .loading-text {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        .loading-bar {
+            width: 120px;
+            height: 4px;
+            background: #ff6b6b;
+            margin: 30px auto 0;
+            border-radius: 2px;
+            animation: loading 1.5s ease-in-out infinite;
+        }
+        @keyframes loading {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* 결과 페이지 스타일 */
+        .result-container {
+            background: linear-gradient(135deg, #e8f4f8 0%, #b8d4e8 100%);
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+        .result-card {
+            background: #fefdfb;
+            border: 3px solid #d4b896;
+            border-radius: 20px 20px 30px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            padding: 60px 40px 40px;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 30px;
+        }
+        .year-badge-small {
+            display: inline-block;
+            background: #d4b896;
+            color: white;
+            border-radius: 20px;
+            padding: 4px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .result-subtitle {
+            font-size: 14px;
+            color: #d4b896;
+            margin-bottom: 5px;
+        }
+        .verse-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .verse-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .verse-reference {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        .result-logo {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4b896;
+            font-size: 12px;
+        }
+        .button-container {
+            display: flex;
+            gap: 15px;
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+        }
+        .btn-secondary {
+            flex: 1;
+            padding: 16px 20px;
+            background: #333;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .btn-download {
+            background: white;
+            color: #333;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+            .year-badge {
+                font-size: 20px;
+                padding: 6px 30px;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            .btn-primary {
+                font-size: 16px;
+                padding: 16px 25px;
+            }
+            .tag-card, .result-card {
+                padding: 50px 30px 30px;
+            }
+            .button-container {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 28px;
+            }
+            .description {
+                font-size: 16px;
+            }
+            .logo {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">Haneul</div>
-            <div class="year-badge">2025</div>
-            <h1 class="main-title">
-                선한 걸음을 위한,<br>
-                응원 말씀
-            </h1>
-        </div>
-        
-        <div class="mountain-bg">
-            <div class="mountain">
-                <div class="mountain-left"></div>
-                <div class="mountain-right"></div>
+    <!-- 메인 페이지 -->
+    <div id="mainPage" class="page active">
+        <div class="container">
+            <div class="header">
+                <div class="logo">Haneul</div>
+                <div class="year-badge">2025</div>
+                <h1 class="main-title">
+                    선한 걸음을 위한,<br>
+                    응원 말씀
+                </h1>
+            </div>
+            
+            <div class="mountain-bg">
+                <div class="mountain">
+                    <div class="mountain-left"></div>
+                    <div class="mountain-right"></div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <p class="subtitle">
+                    선한 사람의 걸음을 여호와께서 정하시니<br>
+                    그분은 그 길을 기뻐하십니다.
+                </p>
+                <p class="description">시편 37편 23절</p>
+                
+                <button class="btn-primary" onclick="startLoading()">
+                    랜덤 말씀 뽑기
+                </button>
             </div>
         </div>
+    </div>
 
-        <div class="content">
-            <p class="subtitle">
-                선한 사람의 걸음을 여호와께서 정하시니<br>
-                그분은 그 길을 기뻐하십니다. </p>
-            <p class="description">시편 37편 23절</p>
+    <!-- 로딩 페이지 -->
+    <div id="loadingPage" class="page">
+        <div class="loading-container">
+            <div class="wave-bg">
+                <div class="wave"></div>
+                <div class="wave wave-2"></div>
+            </div>
             
-            <button class="btn-primary" onclick="alert('랜덤 말씀을 불러오는 기능입니다.')">
-                랜덤 말씀 뽑기
-            </button>
+            <div class="tag-card">
+                <div class="tag-string"></div>
+                <div class="tag-hole"></div>
+                
+                <div class="book-icon">
+                    <svg width="120" height="90" viewBox="0 0 120 90">
+                        <rect x="20" y="30" width="60" height="40" fill="#8b4513" rx="2"/>
+                        <rect x="22" y="32" width="56" height="36" fill="#f5e6d3" rx="1"/>
+                        <line x1="50" y1="32" x2="50" y2="68" stroke="#d4a574" stroke-width="2"/>
+                        <rect x="48" y="48" width="4" height="8" fill="#ff6b6b"/>
+                        <circle cx="75" cy="45" r="15" fill="none" stroke="#333" stroke-width="3"/>
+                        <line x1="86" y1="56" x2="98" y2="68" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+                        <text x="50" y="20" font-size="20" fill="#ffd700">✨</text>
+                        <text x="65" y="15" font-size="14" fill="#ffd700">✨</text>
+                        <text x="55" y="25" font-size="16" fill="#ffd700">✨</text>
+                    </svg>
+                </div>
+                
+                <div class="loading-text">
+                    내게 꼭 맞는 말씀을<br>
+                    찾는 중입니다!
+                </div>
+                
+                <div class="loading-bar"></div>
+            </div>
         </div>
     </div>
+
+    <!-- 결과 페이지 -->
+    <div id="resultPage" class="page">
+        <div class="result-container">
+            <div class="wave-bg">
+                <div class="wave"></div>
+                <div class="wave wave-2"></div>
+            </div>
+            
+            <div class="result-card" id="verseCard">
+                <div class="tag-string"></div>
+                <div class="tag-hole"></div>
+                
+                <div style="text-align: center;">
+                    <span class="year-badge-small">2025</span>
+                    <div class="result-subtitle">선한 걸음을 위한</div>
+                    <div class="verse-title">응원 말씀</div>
+                </div>
+                
+                <div class="verse-content" id="verseContent">
+                    너희 중에<br>
+                    누구든지 지혜가 부족하거든<br>
+                    모든 사람에게 후히 주시고<br>
+                    꾸짖지 아니하시는 하나님께 구하라<br>
+                    그리하면 주시리라
+                </div>
+                
+                <div class="verse-reference" id="verseReference">
+                    야고보서 1장 5절
+                </div>
+                
+                <div class="result-logo">Haneul</div>
+            </div>
+
+            <div class="button-container">
+                <button class="btn-secondary" onclick="startLoading()">
+                    말씀 다시 뽑기
+                </button>
+                <button class="btn-secondary btn-download" onclick="downloadImage()">
+                    <span>📥</span> 이미지 저장하기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const verses = [
+            {
+                content: "너희 중에<br>누구든지 지혜가 부족하거든<br>모든 사람에게 후히 주시고<br>꾸짖지 아니하시는 하나님께 구하라<br>그리하면 주시리라",
+                reference: "야고보서 1장 5절"
+            },
+            {
+                content: "내가 주께 바라는 한 가지 일<br>그것을 구하리니<br>곧 내가 내 평생에<br>여호와의 집에 살면서<br>여호와의 아름다움을 바라보며<br>그의 성전에서 사모하는 그것이라",
+                reference: "시편 27편 4절"
+            },
+            {
+                content: "그러므로 염려하여 이르기를<br>무엇을 먹을까 무엇을 마실까<br>무엇을 입을까 하지 말라<br>너희 하늘 아버지께서<br>이 모든 것이 너희에게 있어야 할 줄을<br>아시느니라",
+                reference: "마태복음 6장 31-32절"
+            },
+            {
+                content: "수고하고 무거운 짐 진 자들아<br>다 내게로 오라<br>내가 너희를 쉬게 하리라",
+                reference: "마태복음 11장 28절"
+            },
+            {
+                content: "내가 산을 향하여 눈을 들리라<br>나의 도움이 어디서 올까<br>나의 도움은<br>천지를 지으신 여호와에게서로다",
+                reference: "시편 121편 1-2절"
+            },
+            {
+                content: "여호와는 나의 목자시니<br>내게 부족함이 없으리로다<br>그가 나를 푸른 풀밭에 누이시며<br>쉴 만한 물가로 인도하시는도다",
+                reference: "시편 23편 1-2절"
+            },
+            {
+                content: "너는 마음을 다하여 여호와를 신뢰하고<br>네 명철을 의지하지 말라<br>너는 범사에 그를 인정하라<br>그리하면 네 길을 지도하시리라",
+                reference: "잠언 3장 5-6절"
+            },
+            {
+                content: "주 안에서 항상 기뻐하라<br>내가 다시 말하노니 기뻐하라<br>너희 관용을 모든 사람에게 알게 하라<br>주께서 가까우시니라",
+                reference: "빌립보서 4장 4-5절"
+            }
+        ];
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function startLoading() {
+            showPage('loadingPage');
+            
+            setTimeout(() => {
+                const randomVerse = verses[Math.floor(Math.random() * verses.length)];
+                document.getElementById('verseContent').innerHTML = randomVerse.content;
+                document.getElementById('verseReference').textContent = randomVerse.reference;
+                showPage('resultPage');
+            }, 2000);
+        }
+
+        function downloadImage() {
+            const card = document.getElementById('verseCard');
+            
+            html2canvas(card, {
+                backgroundColor: '#fefdfb',
+                scale: 2,
+                logging: false,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '하늘대학부_응원말씀_2025.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
 </body>
 </html>
