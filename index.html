@@ -3,367 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>하늘대학부 리더십 말씀 선물</title>
+    <title>The Steps of Haneul - 하늘의 걸음</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
-            font-family: 'Malgun Gothic', sans-serif;
-            background: linear-gradient(to bottom, #f5f0e8 0%, #e8dcc8 100%);
+            font-family: 'Noto Serif KR', serif;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            overflow-x: hidden;
         }
         
-        /* 페이지 전환 */
         .page {
             display: none;
         }
+        
         .page.active {
             display: block;
         }
         
-        /* 메인 페이지 스타일 */
-        .container {
-            background: linear-gradient(to bottom, #f5f0e8 0%, #f0e8d8 30%, #e8dcc8 60%, #d8ccb8 100%);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-        .header {
-            text-align: center;
-            padding: 30px 20px 20px;
-        }
-        .logo {
-            color: #5b8fc7;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 40px;
-        }
-        .year-badge {
-            display: inline-block;
-            border: 3px solid #333;
-            border-radius: 50px;
-            padding: 8px 35px;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-        .main-title {
-            font-size: 36px;
-            font-weight: bold;
-            line-height: 1.4;
-            margin-bottom: 60px;
-            color: #222;
-        }
-        .mountain-bg {
-            position: relative;
-            min-height: 250px;
-            background: linear-gradient(to bottom, transparent 0%, #c8bcac 100%);
-        }
-        .mountain {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 120px;
-        }
-        .mountain-left {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40%;
-            height: 80px;
-            background: linear-gradient(135deg, transparent 50%, #a8a08c 50%);
-            opacity: 0.4;
-        }
-        .mountain-right {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 45%;
-            height: 100px;
-            background: linear-gradient(-135deg, transparent 50%, #a8a08c 50%);
-            opacity: 0.4;
-        }
-        .content {
-            text-align: center;
-            padding: 40px 30px;
-            position: relative;
-            z-index: 1;
-        }
-        .subtitle {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-        .description {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 35px;
-            font-weight: 500;
-        }
-        .btn-primary {
-            display: block;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 20px;
-            padding: 18px 30px;
-            background: linear-gradient(to bottom, #6b5d4f 0%, #4a3f35 100%);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-        
-        /* 로딩 페이지 스타일 */
-        .loading-container {
-            background: linear-gradient(135deg, #e8f4f8 0%, #b8d4e8 100%);
+        /* 메인 페이지 */
+        .main-container {
             min-height: 100vh;
-            width: 100vw;
+            background: linear-gradient(135deg, #5dc9be 0%, #4a9b92 25%, #6dd4c7 50%, #4a9b92 75%, #5dc9be 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: fixed;
-            top: 0;
-            left: 0;
+            position: relative;
             overflow: hidden;
         }
-        .wave-bg {
+        
+        .blur-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
-            height: 50%;
-        }
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            background: #c8a882;
-            border-radius: 50% 50% 0 0;
-            opacity: 0.6;
-        }
-        .wave-2 {
-            background: #d4b896;
-            height: 150px;
-            opacity: 0.8;
-            animation: wave 3s ease-in-out infinite;
-        }
-        @keyframes wave {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .tag-card {
-            background: #fefdfb;
-            border: 3px solid #d4b896;
-            border-radius: 20px 20px 30px 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            padding: 60px 40px;
-            max-width: 400px;
-            width: 90%;
-            position: relative;
-            z-index: 10;
-        }
-        .tag-hole {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 30px;
-            background: #b8b8b8;
-            border-radius: 50%;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        .tag-string {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 40px;
-            background: #c8b896;
-            border-radius: 2px;
-        }
-        .book-icon {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .loading-text {
-            font-size: 18px;
-            color: #333;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-        .loading-bar {
-            width: 120px;
-            height: 4px;
-            background: #ff6b6b;
-            margin: 30px auto 0;
-            border-radius: 2px;
-            animation: loading 1.5s ease-in-out infinite;
-        }
-        @keyframes loading {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            height: 100%;
+            backdrop-filter: blur(80px);
+            -webkit-backdrop-filter: blur(80px);
         }
         
-        /* 결과 페이지 스타일 */
-        .result-container {
-            background: linear-gradient(135deg, #e8f4f8 0%, #b8d4e8 100%);
+        .blur-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.6;
+        }
+        
+        .blur-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .blur-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(173,216,230,0.6) 0%, transparent 70%);
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .blur-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,248,220,0.5) 0%, transparent 70%);
+            top: 50%;
+            left: 20%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(-50%); }
+            50% { transform: translateY(-30px) translateX(-50%); }
+        }
+        
+        .main-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            padding: 40px 20px;
+        }
+        
+        .main-title {
+            font-size: 72px;
+            font-weight: 300;
+            background: linear-gradient(90deg, 
+                #ffffff 0%, 
+                #fff8dc 15%,
+                #ffd700 25%,
+                #ffb6c1 35%,
+                #dda0dd 45%,
+                #87ceeb 55%,
+                #98fb98 65%,
+                #ffd700 75%,
+                #87ceeb 85%,
+                #ffffff 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-style: italic;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5);
+            font-family: 'Brush Script MT', cursive;
+        }
+        
+        .main-subtitle {
+            font-size: 28px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-top: 30px;
+        }
+        
+        .start-button {
+            margin-top: 60px;
+            padding: 18px 50px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            color: white;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .start-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* 로딩 페이지 */
+        .loading-container {
             min-height: 100vh;
-            width: 100vw;
+            background: linear-gradient(135deg, #5dc9be 0%, #4a9b92 25%, #6dd4c7 50%, #4a9b92 75%, #5dc9be 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .loading-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        
+        .loading-circle {
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 24px;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        /* 결과 페이지 */
+        .result-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #5dc9be 0%, #4a9b92 25%, #6dd4c7 50%, #4a9b92 75%, #5dc9be 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: fixed;
-            top: 0;
-            left: 0;
+            position: relative;
             overflow: hidden;
             padding: 40px 20px;
         }
+        
         .result-card {
-            background: #fefdfb;
-            border: 3px solid #d4b896;
-            border-radius: 20px 20px 30px 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            padding: 60px 40px 40px;
-            max-width: 450px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 50px;
+            max-width: 600px;
             width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
             position: relative;
             z-index: 10;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
-        .year-badge-small {
-            display: inline-block;
-            background: #d4b896;
-            color: white;
-            border-radius: 20px;
-            padding: 4px 16px;
-            font-size: 14px;
-            font-weight: bold;
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .result-year {
+            font-size: 18px;
+            color: #5dc9be;
+            font-weight: 300;
+            letter-spacing: 2px;
             margin-bottom: 10px;
         }
-        .result-subtitle {
-            font-size: 14px;
-            color: #d4b896;
-            margin-bottom: 5px;
+        
+        .result-title {
+            font-size: 28px;
+            background: linear-gradient(90deg, #5dc9be, #4a9b92);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 400;
+            letter-spacing: 4px;
         }
-        .verse-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 30px;
-        }
+        
         .verse-content {
-            font-size: 16px;
-            line-height: 1.8;
+            font-size: 22px;
+            line-height: 2;
             color: #333;
-            margin-bottom: 25px;
             text-align: center;
+            margin: 40px 0;
+            font-weight: 300;
         }
+        
         .verse-reference {
-            font-size: 14px;
-            color: #666;
             text-align: center;
+            font-size: 16px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
+        
         .result-logo {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #d4b896;
-            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #999;
+            letter-spacing: 2px;
         }
+        
         .button-container {
             display: flex;
-            gap: 15px;
-            max-width: 450px;
+            gap: 20px;
+            max-width: 600px;
             width: 90%;
             z-index: 10;
         }
-        .btn-secondary {
+        
+        .result-button {
             flex: 1;
-            padding: 16px 20px;
-            background: #333;
+            padding: 18px 30px;
+            background: rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.6);
             color: white;
             font-size: 16px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
+            border-radius: 50px;
             cursor: pointer;
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
-        .btn-download {
-            background: white;
-            color: #333;
-            border: 2px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-secondary:hover {
+        
+        .result-button:hover {
+            background: rgba(255,255,255,0.4);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         
         @media (max-width: 768px) {
             .main-title {
-                font-size: 32px;
-                margin-bottom: 40px;
+                font-size: 48px;
             }
-            .year-badge {
+            
+            .main-subtitle {
                 font-size: 20px;
-                padding: 6px 30px;
+                letter-spacing: 4px;
             }
-            .content {
-                padding: 30px 20px;
+            
+            .result-card {
+                padding: 40px 30px;
             }
-            .btn-primary {
-                font-size: 16px;
-                padding: 16px 25px;
+            
+            .verse-content {
+                font-size: 18px;
+                line-height: 1.8;
             }
-            .tag-card, .result-card {
-                padding: 50px 30px 30px;
-            }
+            
             .button-container {
                 flex-direction: column;
             }
         }
+        
         @media (max-width: 480px) {
             .main-title {
-                font-size: 28px;
+                font-size: 36px;
             }
-            .description {
+            
+            .main-subtitle {
                 font-size: 16px;
             }
-            .logo {
-                font-size: 14px;
+            
+            .verse-content {
+                font-size: 16px;
             }
         }
     </style>
@@ -371,33 +339,17 @@
 <body>
     <!-- 메인 페이지 -->
     <div id="mainPage" class="page active">
-        <div class="container">
-            <div class="header">
-                <div class="logo">Haneul</div>
-                <div class="year-badge">2025</div>
-                <h1 class="main-title">
-                    선한 걸음을 위한,<br>
-                    응원 말씀
-                </h1>
+        <div class="main-container">
+            <div class="blur-overlay">
+                <div class="blur-circle blur-1"></div>
+                <div class="blur-circle blur-2"></div>
+                <div class="blur-circle blur-3"></div>
             </div>
             
-            <div class="mountain-bg">
-                <div class="mountain">
-                    <div class="mountain-left"></div>
-                    <div class="mountain-right"></div>
-                </div>
-            </div>
-            
-            <div class="content">
-                <p class="subtitle">
-                    선한 사람의 걸음을 여호와께서 정하시니<br>
-                    그분은 그 길을 기뻐하십니다.
-                </p>
-                <p class="description">시편 37편 23절</p>
-                
-                <button class="btn-primary" onclick="startLoading()">
-                    랜덤 말씀 뽑기
-                </button>
+            <div class="main-content">
+                <h1 class="main-title">The Steps of Haneul</h1>
+                <p class="main-subtitle">하늘의 걸음</p>
+                <button class="start-button" onclick="startLoading()">시작하기</button>
             </div>
         </div>
     </div>
@@ -405,35 +357,17 @@
     <!-- 로딩 페이지 -->
     <div id="loadingPage" class="page">
         <div class="loading-container">
-            <div class="wave-bg">
-                <div class="wave"></div>
-                <div class="wave wave-2"></div>
+            <div class="blur-overlay">
+                <div class="blur-circle blur-1"></div>
+                <div class="blur-circle blur-2"></div>
+                <div class="blur-circle blur-3"></div>
             </div>
             
-            <div class="tag-card">
-                <div class="tag-string"></div>
-                <div class="tag-hole"></div>
-                
-                <div class="book-icon">
-                    <svg width="120" height="90" viewBox="0 0 120 90">
-                        <rect x="20" y="30" width="60" height="40" fill="#8b4513" rx="2"/>
-                        <rect x="22" y="32" width="56" height="36" fill="#f5e6d3" rx="1"/>
-                        <line x1="50" y1="32" x2="50" y2="68" stroke="#d4a574" stroke-width="2"/>
-                        <rect x="48" y="48" width="4" height="8" fill="#ff6b6b"/>
-                        <circle cx="75" cy="45" r="15" fill="none" stroke="#333" stroke-width="3"/>
-                        <line x1="86" y1="56" x2="98" y2="68" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-                        <text x="50" y="20" font-size="20" fill="#ffd700">✨</text>
-                        <text x="65" y="15" font-size="14" fill="#ffd700">✨</text>
-                        <text x="55" y="25" font-size="16" fill="#ffd700">✨</text>
-                    </svg>
+            <div class="loading-content">
+                <div class="loading-icon">
+                    <div class="loading-circle"></div>
                 </div>
-                
-                <div class="loading-text">
-                    내게 꼭 맞는 말씀을<br>
-                    찾는 중입니다!
-                </div>
-                
-                <div class="loading-bar"></div>
+                <p class="loading-text">말씀을 불러오는 중...</p>
             </div>
         </div>
     </div>
@@ -441,19 +375,16 @@
     <!-- 결과 페이지 -->
     <div id="resultPage" class="page">
         <div class="result-container">
-            <div class="wave-bg">
-                <div class="wave"></div>
-                <div class="wave wave-2"></div>
+            <div class="blur-overlay">
+                <div class="blur-circle blur-1"></div>
+                <div class="blur-circle blur-2"></div>
+                <div class="blur-circle blur-3"></div>
             </div>
             
             <div class="result-card" id="verseCard">
-                <div class="tag-string"></div>
-                <div class="tag-hole"></div>
-                
-                <div style="text-align: center;">
-                    <span class="year-badge-small">2025</span>
-                    <div class="result-subtitle">선한 걸음을 위한</div>
-                    <div class="verse-title">응원 말씀</div>
+                <div class="result-header">
+                    <div class="result-year">2025</div>
+                    <h2 class="result-title">하늘의 걸음</h2>
                 </div>
                 
                 <div class="verse-content" id="verseContent">
@@ -468,15 +399,15 @@
                     야고보서 1장 5절
                 </div>
                 
-                <div class="result-logo">Haneul</div>
+                <div class="result-logo">The Steps of Haneul</div>
             </div>
 
             <div class="button-container">
-                <button class="btn-secondary" onclick="startLoading()">
-                    말씀 다시 뽑기
+                <button class="result-button" onclick="startLoading()">
+                    다시 뽑기
                 </button>
-                <button class="btn-secondary btn-download" onclick="downloadImage()">
-                    <span>📥</span> 이미지 저장하기
+                <button class="result-button" onclick="downloadImage()">
+                    이미지 저장
                 </button>
             </div>
         </div>
@@ -516,6 +447,10 @@
             {
                 content: "주 안에서 항상 기뻐하라<br>내가 다시 말하노니 기뻐하라<br>너희 관용을 모든 사람에게 알게 하라<br>주께서 가까우시니라",
                 reference: "빌립보서 4장 4-5절"
+            },
+            {
+                content: "선한 사람의 걸음을<br>여호와께서 정하시니<br>그분은 그 길을 기뻐하십니다",
+                reference: "시편 37편 23절"
             }
         ];
 
@@ -541,13 +476,13 @@
             const card = document.getElementById('verseCard');
             
             html2canvas(card, {
-                backgroundColor: '#fefdfb',
+                backgroundColor: '#ffffff',
                 scale: 2,
                 logging: false,
                 useCORS: true
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = '하늘대학부_응원말씀_2025.png';
+                link.download = 'The_Steps_of_Haneul_2025.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
