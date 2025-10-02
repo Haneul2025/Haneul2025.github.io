@@ -20,49 +20,56 @@ function startLoading() {
 
 // 이미지 다운로드 함수
 function downloadImage() {
-    // 버튼 숨기기
+    const resultContainer = document.querySelector('.result-container');
     const buttonContainer = document.querySelector('.button-container');
-    const originalButtonDisplay = buttonContainer.style.display;
+    
+    // 저장 모드 활성화
+    resultContainer.classList.add('saving-mode');
     buttonContainer.style.display = 'none';
     
-    // 전체 결과 페이지를 1080x1920 크기로 캡처
-    const resultPage = document.getElementById('resultPage');
-    
-    html2canvas(resultPage, {
-        width: 1080,
-        height: 1920,
-        scale: 1,
-        logging: false,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#f5f5dc', // 기본 배경색 설정 (베이지색)
-        foreignObjectRendering: true
-    }).then(canvas => {
-        // 버튼 다시 표시
-        buttonContainer.style.display = originalButtonDisplay;
-        
-        // 다운로드 링크 생성
-        const link = document.createElement('a');
-        link.download = 'Haneul_2025_말씀카드.png';
-        link.href = canvas.toDataURL('image/png', 1.0);
-        link.click();
-    }).catch(error => {
-        // 버튼 다시 표시 (에러 시에도)
-        buttonContainer.style.display = originalButtonDisplay;
-        console.error('이미지 저장 중 오류 발생:', error);
-        
-        // 대안: 카드만 저장
-        const card = document.getElementById('verseCard');
-        html2canvas(card, {
-            backgroundColor: '#ffffff',
-            scale: 2,
+    // 약간의 지연을 주어 스타일이 적용되도록 함
+    setTimeout(() => {
+        html2canvas(resultContainer, {
+            width: 1080,
+            height: 1920,
+            scale: 1,
             logging: false,
-            useCORS: true
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null,
+            foreignObjectRendering: true,
+            imageTimeout: 15000,
+            removeContainer: false
         }).then(canvas => {
+            // 저장 모드 해제
+            resultContainer.classList.remove('saving-mode');
+            buttonContainer.style.display = '';
+            
+            // 다운로드 링크 생성
             const link = document.createElement('a');
-            link.download = 'Haneul_2025_말씀카드_카드만.png';
-            link.href = canvas.toDataURL('image/png');
+            link.download = 'Haneul_2025_말씀카드.png';
+            link.href = canvas.toDataURL('image/png', 1.0);
             link.click();
+        }).catch(error => {
+            console.error('이미지 저장 중 오류 발생:', error);
+            
+            // 저장 모드 해제
+            resultContainer.classList.remove('saving-mode');
+            buttonContainer.style.display = '';
+            
+            // 대안 방법: 카드만 저장
+            const card = document.getElementById('verseCard');
+            html2canvas(card, {
+                backgroundColor: '#ffffff',
+                scale: 2,
+                logging: false,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Haneul_2025_말씀카드_카드만.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
         });
-    });
+    }, 100);
 }
