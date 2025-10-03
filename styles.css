@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Noto Serif KR', serif;
     min-height: 100vh;
@@ -34,8 +33,6 @@ body {
     overflow: hidden;
 }
 
-
-
 .main-content {
     text-align: center;
     z-index: 10;
@@ -45,38 +42,22 @@ body {
 
 .main-title {
     font-family: "flirt-script-regular", sans-serif;
-    font-size: 72px;
+    font-size: clamp(36px, 8vw, 72px);
     color: rgba(12, 68, 59, 1);
-    font-weight: 400;   /* Regular은 400 */
+    font-weight: 400;
     font-style: normal;
-    /* background: linear-gradient(90deg, 
-        #ffffff 0%, 
-        #fff8dc 15%,
-        #ffd700 25%,
-        #ffb6c1 35%,
-        #dda0dd 45%,
-        #87ceeb 55%,
-        #98fb98 65%,
-        #ffd700 75%,
-        #87ceeb 85%,
-        #ffffff 100%
-    ); */
-    /* -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text; */
     margin-bottom: 20px;
     letter-spacing: 2px;
     line-height: 1.2;
     text-shadow: 0 0 30px rgba(255,255,255,0.5);
 }
 
-
 .main-subtitle {
     font-family: "grandiflora-one", "Noto Serif KR", serif;
-    font-size: 28px;
+    font-size: clamp(16px, 3vw, 28px);
     color: rgba(12, 68, 59, 1);
     font-weight: 300;
-    letter-spacing: 8px;
+    letter-spacing: clamp(2px, 1vw, 8px);
     margin-top: 30px;
 }
 
@@ -86,7 +67,7 @@ body {
     background: rgba(255,255,255,0.2);
     border: 2px solid rgba(12, 68, 59, 0.4);
     color: rgba(12, 68, 59, 1);
-    font-size: 18px;
+    font-size: clamp(16px, 2vw, 18px);
     border-radius: 50px;
     cursor: pointer;
     backdrop-filter: blur(10px);
@@ -126,8 +107,8 @@ body {
 }
 
 .loading-icon {
-    width: 120px;
-    height: 120px;
+    width: clamp(80px, 15vw, 120px);
+    height: clamp(80px, 15vw, 120px);
     margin: 0 auto 40px;
     position: relative;
 }
@@ -147,10 +128,9 @@ body {
 }
 
 .loading-text {
-    font-size: 20px;
+    font-size: clamp(16px, 2.5vw, 20px);
     font-family: "grandiflora-one", "Noto Serif KR", serif;
     color: rgba(12, 68, 59, 1);
-    /* color: white; */
     font-weight: 300;
     letter-spacing: 2px;
 }
@@ -176,7 +156,7 @@ body {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(20px);
     border-radius: 30px;
-    padding: 60px 50px;
+    padding: clamp(30px, 5vw, 60px) clamp(25px, 4vw, 50px);
     max-width: 600px;
     width: 90%;
     box-shadow: 0 20px 60px rgba(0,0,0,0.2);
@@ -185,30 +165,29 @@ body {
     margin-bottom: 40px;
 }
 
-/* 이미지 저장을 위한 스타일 - 1080x1920 세로형 최적화 */
+/* 이미지 저장을 위한 스타일 - 1080x1920 세로형 고정 (저장용) */
 .result-container.saving-mode {
     width: 1080px;
     height: 1920px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;       /* 카드 위쪽 배치 */
+    align-items: flex-start;
     background: url('./back.jpg') no-repeat center/cover;
-    padding-top: 220px;            /* 화면 위에서 220px 내려옴 */
+    padding-top: 220px;
 }
 
 .result-container.saving-mode .result-card {
-    width: 720px;                  /* 카드 고정 폭 */
-    min-height: 1100px;            /* 카드 최소 높이 */
-    background: #fff;              /* 종이 배경 */
+    width: 720px;
+    min-height: 1100px;
+    background: #fff;
     border-radius: 40px;
     padding: 100px 70px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.25); /* 종이 떠있는 효과 */
-    margin: 0 auto;            /* ✅ 좌우 균형 강제 */
-    margin-bottom: 200px;          /* ✅ 카드 아래쪽 공백 */
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    margin: 0 auto;
+    margin-bottom: 200px;
     position: relative;
     z-index: 10;
 }
-
 
 .result-container.saving-mode .result-year {
     font-size: 32px;
@@ -239,25 +218,20 @@ body {
     letter-spacing: 1px;
 }
 
-/* 평소엔 자연스럽게 숨김 */
 .haneul-logo {
     display: none;
 }
 
-/* 저장 모드일 때만 강제 노출 */
 .result-container.saving-mode .haneul-logo {
     display: block !important;
     position: absolute;
-    bottom: 40px;         /* 화면 하단 여백 */
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;         /* 원하는 크기 */
+    width: 180px;
     height: auto;
     z-index: 20;
 }
-
-
-
 
 .result-container.saving-mode .result-logo {
     font-size: 22px;
@@ -271,14 +245,13 @@ body {
     display: none !important;
 }
 
-
 .result-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: clamp(20px, 4vw, 40px);
 }
 
 .result-year {
-    font-size: 18px;
+    font-size: clamp(14px, 2vw, 18px);
     color: #5dc9be;
     font-weight: 300;
     letter-spacing: 2px;
@@ -286,29 +259,27 @@ body {
 }
 
 .result-title {
-    font-size: 28px;
+    font-size: clamp(20px, 3vw, 28px);
     font-weight: 400;
-    letter-spacing: 4px;
+    letter-spacing: clamp(2px, 0.5vw, 4px);
     text-align: center;
-    color: #5dc9be; 
-    background: none; 
+    color: #5dc9be;
+    background: none;
     font-family: "grandiflora-one", "Noto Serif KR", serif;
 }
 
-
-
 .verse-content {
-    font-size: 20px;
-    line-height: 2;
+    font-size: clamp(16px, 2.5vw, 20px);
+    line-height: clamp(1.6, 0.2vw + 1.5, 2);
     color: #333;
     text-align: center;
-    margin: 40px 0;
+    margin: clamp(20px, 4vw, 40px) 0;
     font-weight: 300;
 }
 
 .verse-reference {
     text-align: center;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     color: #666;
     font-weight: 300;
     letter-spacing: 1px;
@@ -316,8 +287,8 @@ body {
 
 .result-logo {
     text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
+    margin-top: clamp(20px, 4vw, 40px);
+    font-size: clamp(12px, 1.5vw, 14px);
     color: #999;
     letter-spacing: 2px;
 }
@@ -332,11 +303,11 @@ body {
 
 .result-button {
     flex: 1;
-    padding: 18px 30px;
+    padding: clamp(14px, 2vw, 18px) clamp(20px, 3vw, 30px);
     background: rgba(255,255,255,0.3);
     border: 2px solid rgba(12, 68, 59, 0.4);
     color: rgba(12, 68, 59, 1);
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     border-radius: 50px;
     cursor: pointer;
     backdrop-filter: blur(10px);
@@ -353,40 +324,114 @@ body {
     transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-    .main-title {
-        font-size: 48px;
-    }
-    
-    .main-subtitle {
-        font-size: 20px;
-        letter-spacing: 4px;
+/* 태블릿 가로 */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 30px 15px;
     }
     
     .result-card {
-        padding: 40px 30px;
+        padding: 40px 35px;
+    }
+}
+
+/* 태블릿 세로 */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
     }
     
-    .verse-content {
-        font-size: 18px;
-        line-height: 1.8;
+    .main-container,
+    .loading-container,
+    .result-container {
+        background-attachment: scroll;
+    }
+    
+    .main-title {
+        margin-bottom: 15px;
+    }
+    
+    .main-subtitle {
+        margin-top: 20px;
+    }
+    
+    .start-button {
+        margin-top: 40px;
+        padding: 16px 40px;
+    }
+    
+    .result-card {
+        padding: 35px 25px;
+        border-radius: 20px;
+    }
+    
+    .button-container {
+        gap: 15px;
+    }
+}
+
+/* 대형 모바일 */
+@media (max-width: 640px) {
+    .result-container {
+        padding: 30px 15px;
     }
     
     .button-container {
         flex-direction: column;
+        gap: 12px;
+    }
+    
+    .result-button {
+        width: 100%;
     }
 }
 
+/* 소형 모바일 */
 @media (max-width: 480px) {
-    .main-title {
-        font-size: 36px;
+    .main-content {
+        padding: 20px 15px;
     }
     
-    .main-subtitle {
-        font-size: 16px;
+    .start-button {
+        margin-top: 30px;
+        padding: 14px 30px;
+    }
+    
+    .loading-icon {
+        margin-bottom: 30px;
+    }
+    
+    .result-container {
+        padding: 20px 10px;
+    }
+    
+    .result-card {
+        padding: 30px 20px;
+        border-radius: 15px;
+        width: 95%;
+    }
+    
+    .result-header {
+        margin-bottom: 20px;
     }
     
     .verse-content {
-        font-size: 16px;
+        margin: 20px 0;
+    }
+    
+    .button-container {
+        width: 95%;
+        gap: 10px;
+    }
+}
+
+/* 초소형 모바일 */
+@media (max-width: 360px) {
+    .result-card {
+        padding: 25px 15px;
+    }
+    
+    .verse-content {
+        line-height: 1.6;
     }
 }
