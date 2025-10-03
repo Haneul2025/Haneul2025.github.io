@@ -230,21 +230,23 @@ body {
     height: 1920px;
     min-height: 1920px;
     max-height: 1920px;
-    padding: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-size: cover;
-    background-position: center center;
+    background: url('./back.jpg') no-repeat center center / cover; /* ✅ 배경 */
+    padding: 0;
 }
 
 .result-container.saving-mode .result-card {
-    max-width: 680px;
-    width: 680px;
+    max-width: 720px;
+    width: 720px;
     margin: 0 auto;
     padding: 100px 70px;
     border-radius: 40px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-    background: rgba(255,255,255,0.97);
+    background: #fff; /* ✅ 독립된 카드 */
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 10;
 }
 
 .result-container.saving-mode .result-year {
