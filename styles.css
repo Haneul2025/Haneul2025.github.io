@@ -234,6 +234,22 @@ body {
     letter-spacing: 1px;
 }
 
+.haneul-logo {
+    display: none;
+}
+
+/* 저장 모드일 때만 표시 & 하단 고정 */
+.result-container.saving-mode .haneul-logo {
+    display: block;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;   /* 크기 축소 */
+    height: auto;
+}
+
+
 .result-container.saving-mode .result-logo {
     font-size: 22px;
     margin-top: 80px;
