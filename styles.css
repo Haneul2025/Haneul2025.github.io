@@ -248,7 +248,6 @@ body {
 }
 
 
-
 .result-container.saving-mode .result-year {
     font-size: 32px;
     margin-bottom: 20px;
@@ -261,7 +260,6 @@ body {
     letter-spacing: 6px;
     margin-bottom: 80px;
     line-height: 1.4;
-    color: #5dc9be;
 }
 
 .result-container.saving-mode .verse-content {
@@ -315,8 +313,14 @@ body {
     letter-spacing: 4px;
     text-align: center;
 
-    /* ✅ 단순한 색상으로 변경 */
-    color: #5dc9be;
+    /* ✅ 글자 자체에만 색상 입히기 */
+    background: linear-gradient(90deg, #5dc9be, #4a9b92);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* ✅ 배경 박스 제거 */
+    background-color: transparent;
 }
 
 
