@@ -46,9 +46,10 @@ body {
 .main-title {
     font-family: "flirt-script-regular", sans-serif;
     font-size: 72px;
+    color: rgba(12, 68, 59, 1);
     font-weight: 400;   /* Regular은 400 */
     font-style: normal;
-    background: linear-gradient(90deg, 
+    /* background: linear-gradient(90deg, 
         #ffffff 0%, 
         #fff8dc 15%,
         #ffd700 25%,
@@ -59,7 +60,7 @@ body {
         #ffd700 75%,
         #87ceeb 85%,
         #ffffff 100%
-    );
+    ); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -73,7 +74,7 @@ body {
 .main-subtitle {
     font-family: "grandiflora-one", "Noto Serif KR", serif;
     font-size: 28px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(12, 68, 59, 1);
     font-weight: 300;
     letter-spacing: 8px;
     margin-top: 30px;
