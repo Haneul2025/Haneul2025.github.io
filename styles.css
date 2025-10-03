@@ -242,6 +242,7 @@ body {
     border-radius: 40px;
     padding: 100px 70px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.25); /* 종이 떠있는 효과 */
+    margin: 0 auto;            /* ✅ 좌우 균형 강제 */
     margin-bottom: 200px;          /* ✅ 카드 아래쪽 공백 */
     position: relative;
     z-index: 10;
@@ -312,16 +313,10 @@ body {
     font-weight: 400;
     letter-spacing: 4px;
     text-align: center;
-
-    /* ✅ 글자 자체에만 색상 입히기 */
-    background: linear-gradient(90deg, #5dc9be, #4a9b92);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-
-    /* ✅ 배경 박스 제거 */
-    background-color: transparent;
+    color: #5dc9be; 
+    background: none; 
 }
+
 
 
 .verse-content {
