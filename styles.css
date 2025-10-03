@@ -147,8 +147,10 @@ body {
 }
 
 .loading-text {
-    font-size: 24px;
-    color: white;
+    font-size: 20px;
+    font-family: "grandiflora-one", "Noto Serif KR", serif;
+    color: rgba(12, 68, 59, 1);
+    /* color: white; */
     font-weight: 300;
     letter-spacing: 2px;
 }
