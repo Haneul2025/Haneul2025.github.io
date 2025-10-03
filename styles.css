@@ -234,20 +234,23 @@ body {
     letter-spacing: 1px;
 }
 
+/* 평소엔 숨김 */
 .haneul-logo {
     display: none;
 }
 
-/* 저장 모드일 때만 표시 & 하단 고정 */
+/* 저장 모드에서만 보이도록 */
 .result-container.saving-mode .haneul-logo {
     display: block;
     position: absolute;
-    bottom: 80px;
+    bottom: 40px;         /* 화면 맨 아래에서 40px 띄움 */
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;   /* 크기 축소 */
+    width: 140px;         /* ✅ 더 작게 */
     height: auto;
+    z-index: 10;
 }
+
 
 
 .result-container.saving-mode .result-logo {
