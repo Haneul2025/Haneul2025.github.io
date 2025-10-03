@@ -178,9 +178,10 @@ body {
 
 .result-container.saving-mode .result-card {
     display: flex;
-    flex-direction: column;       
-    justify-content: flex-start;  
-    align-items: center;          
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   /* verse-wrapper를 세로 가운데 배치 */
+    position: relative;        /* result-logo absolute 기준 */
     padding: 100px 70px;
     width: 720px;
     min-height: 1100px;
@@ -188,21 +189,17 @@ body {
     border-radius: 40px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.25);
     margin: 0 auto 200px;
-    position: relative;
     z-index: 10;
 }
 
-
-
-
 .result-container.saving-mode .verse-wrapper {
-    flex: 1;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 세로 중앙 */
-    align-items: center;      /* 가로 중앙 */
-    gap: 15px; /* 말씀과 절 간격 */
-    text-align: center;
+    justify-content: center;   /* 중앙 정렬 */
+    align-items: center;
+    flex: none;                /* flex 차지 안 하고 가운데만 위치 */
+    gap: 15px;
 }
 
 .result-container.saving-mode .result-year {
@@ -254,13 +251,16 @@ body {
 }
 
 .result-container.saving-mode .result-logo {
-    margin-top: auto;       /* 위 공간 다 밀어내고 */
-    margin-bottom: 40px;    /* 하단과 40px 간격 유지 */
+    position: absolute;        /* 카드 하단 고정 */
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 22px;
     opacity: 0.5;
     color: #999;
     letter-spacing: 3px;
     text-align: center;
+    margin: 0; /* margin-top:auto 제거 */
 }
 
 .result-container.saving-mode .button-container {
