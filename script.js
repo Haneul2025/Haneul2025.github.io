@@ -84,24 +84,31 @@ function downloadImage() {
     }, 200);
 }
 
-// function autoResizeText(element, maxHeight) {
-//     let fontSize = parseInt(window.getComputedStyle(element).fontSize);
-//     while (element.scrollHeight > maxHeight && fontSize > 12) {
-//         fontSize--;
-//         element.style.fontSize = fontSize + "px";
-//     }
-// }
+function autoResizeText(element, maxHeight, minSize = 20, maxSize = 34) {
+    let fontSize = maxSize;
+    element.style.fontSize = fontSize + "px";
 
-// // 저장 모드 카드가 로드된 뒤 실행
-// window.addEventListener("load", () => {
-//     const verse = document.getElementById("verseContent");
-//     const card = document.getElementById("verseCard");
+    while (element.scrollHeight > maxHeight && fontSize > minSize) {
+        fontSize--;
+        element.style.fontSize = fontSize + "px";
+    }
+}
 
-//     if (verse && card) {
-//         autoResizeText(verse, card.clientHeight * 0.6); 
-//         // 카드 높이의 60% 안에 들어오도록 줄임
-//     }
-// });
+window.addEventListener("load", () => {
+    const resultContainer = document.querySelector(".result-container");
+    const verse = document.getElementById("verseContent");
+    const card = document.getElementById("verseCard");
+
+    if (
+        resultContainer &&
+        resultContainer.classList.contains("saving-mode") &&
+        verse &&
+        card
+    ) {
+        autoResizeText(verse, card.clientHeight * 0.6, 20, 34);
+    }
+});
+
 
 
 // // 이미지 다운로드 함수
