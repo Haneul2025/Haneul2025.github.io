@@ -177,17 +177,21 @@ body {
 }
 
 .result-container.saving-mode .result-card {
+    display: flex;
+    flex-direction: column;       
+    justify-content: flex-start;  
+    align-items: center;          
+    padding: 100px 70px;
     width: 720px;
     min-height: 1100px;
     background: #fff;
     border-radius: 40px;
-    padding: 100px 70px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-    margin: 0 auto;
-    margin-bottom: 200px;
+    margin: 0 auto 200px;
     position: relative;
     z-index: 10;
 }
+
 
 
 
@@ -250,11 +254,13 @@ body {
 }
 
 .result-container.saving-mode .result-logo {
+    margin-top: auto;       /* 위 공간 다 밀어내고 */
+    margin-bottom: 40px;    /* 하단과 40px 간격 유지 */
     font-size: 22px;
-    margin-top: 80px;
     opacity: 0.5;
     color: #999;
     letter-spacing: 3px;
+    text-align: center;
 }
 
 .result-container.saving-mode .button-container {
