@@ -176,7 +176,7 @@ body {
     padding-top: 220px;
 }
 
-.result-container.saving-mode .result-card {
+/* .result-container.saving-mode .result-card {
     width: 720px;
     min-height: 1100px;
     background: #fff;
@@ -187,10 +187,22 @@ body {
     margin-bottom: 200px;
     position: relative;
     z-index: 10;
+} */
 
-    /* 하단 고정을 위해 추가 */
+.result-container.saving-mode .result-card {
     display: flex;
     flex-direction: column;
+    height: 1500px; /* 고정 높이 */
+}
+
+.result-container.saving-mode .verse-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 */
+    align-items: center;      /* 가로 중앙 */
+    gap: 30px; /* 말씀과 절 간격 */
+    text-align: center;
 }
 
 .result-container.saving-mode .result-year {
@@ -240,15 +252,21 @@ body {
     z-index: 20;
 }
 
+/* .result-container.saving-mode .result-logo {
+    font-size: 22px;
+    margin-top: 80px;
+    opacity: 0.5;
+    color: #999;
+    letter-spacing: 3px;
+} */
 .result-container.saving-mode .result-logo {
-    margin-top: auto; /* 남은 공간을 밀어내서 항상 맨 아래 */
+    margin-top: auto; /* 항상 하단 */
     text-align: center;
     font-size: 22px;
     opacity: 0.5;
     color: #999;
     letter-spacing: 3px;
 }
-
 .result-container.saving-mode .button-container {
     display: none !important;
 }
