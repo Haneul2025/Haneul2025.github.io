@@ -222,13 +222,14 @@ body {
     font-size: 34px;
     line-height: 2;
     margin: 100px 0;
+    margin-bottom: 30px;  /* 본문과 절 사이 간격 고정 */
     font-weight: 400;
     color: #2c2c2c;
 }
 
 .result-container.saving-mode .verse-reference {
     font-size: 26px;
-    margin-top: 80px;
+    margin-top: 0px;
     color: #666;
     letter-spacing: 1px;
 }
