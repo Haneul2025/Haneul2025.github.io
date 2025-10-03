@@ -228,26 +228,26 @@ body {
 .result-container.saving-mode {
     width: 1080px;
     height: 1920px;
-    min-height: 1920px;
-    max-height: 1920px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background: url('./back.jpg') no-repeat center center / cover; /* ✅ 배경 */
-    padding: 0;
+    align-items: flex-start;       /* 카드 위쪽 배치 */
+    background: url('./back.jpg') no-repeat center/cover;
+    padding-top: 220px;            /* 화면 위에서 220px 내려옴 */
 }
 
 .result-container.saving-mode .result-card {
-    max-width: 720px;
-    width: 720px;
-    margin: 0 auto;
-    padding: 100px 70px;
+    width: 720px;                  /* 카드 고정 폭 */
+    min-height: 1100px;            /* 카드 최소 높이 */
+    background: #fff;              /* 종이 배경 */
     border-radius: 40px;
-    background: #fff; /* ✅ 독립된 카드 */
-    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    padding: 100px 70px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25); /* 종이 떠있는 효과 */
+    margin-bottom: 200px;          /* ✅ 카드 아래쪽 공백 */
     position: relative;
     z-index: 10;
 }
+
+
 
 .result-container.saving-mode .result-year {
     font-size: 32px;
