@@ -22,53 +22,48 @@ function startLoading() {
 function downloadImage() {
     const resultContainer = document.querySelector('.result-container');
     const buttonContainer = document.querySelector('.button-container');
-    
+
     // 저장 모드 활성화
     resultContainer.classList.add('saving-mode');
     buttonContainer.style.display = 'none';
-    
-    // 약간의 지연을 주어 스타일이 적용되도록 함
+
     setTimeout(() => {
-        // 배경 이미지 로드
         const backgroundImg = new Image();
         backgroundImg.crossOrigin = 'anonymous';
-        
-        backgroundImg.onload = function() {
-            // html2canvas로 컨테이너 캡처 (배경 제외)
+        backgroundImg.src = './back.jpg';  // ✅ 배경 정확히 지정
+
+        backgroundImg.onload = function () {
             html2canvas(resultContainer, {
                 width: 1080,
                 height: 1920,
-                scale: 1,
+                scale: 2, // 더 선명하게
                 logging: false,
                 useCORS: true,
-                allowTaint: true,
                 backgroundColor: null,
-                foreignObjectRendering: true,
-                imageTimeout: 15000,
-                removeContainer: false,
-                ignoreElements: function(element) {
-                    // 배경 이미지 요소는 무시하고 나중에 수동으로 추가
-                    return element.classList.contains('blur-overlay') || 
+                ignoreElements: (element) => {
+                    return element.classList.contains('blur-overlay') ||
                            element.classList.contains('blur-circle');
                 }
             }).then(canvas => {
-                // 새로운 캔버스 생성 (배경 이미지 포함)
+                // 최종 캔버스 (1080x1920)
                 const finalCanvas = document.createElement('canvas');
                 const ctx = finalCanvas.getContext('2d');
                 finalCanvas.width = 1080;
                 finalCanvas.height = 1920;
-                
-                // 배경 이미지 그리기
+
+                // ✅ 배경 먼저 채우기
                 ctx.drawImage(backgroundImg, 0, 0, 1080, 1920);
-                
-                // 원본 캔버스 내용을 배경 위에 그리기
-                ctx.drawImage(canvas, 0, 0);
-                
+
+                // ✅ 카드 캡처본 합성
+                const offsetX = (1080 - canvas.width) / 2;
+                const offsetY = (1920 - canvas.height) / 2;
+                ctx.drawImage(canvas, offsetX, offsetY);
+
                 // 저장 모드 해제
                 resultContainer.classList.remove('saving-mode');
                 buttonContainer.style.display = '';
-                
-                // 다운로드 링크 생성
+
+                // 다운로드 링크
                 const link = document.createElement('a');
                 link.download = 'Haneul_2025_말씀카드.png';
                 link.href = finalCanvas.toDataURL('image/png', 1.0);
@@ -78,27 +73,21 @@ function downloadImage() {
                 fallbackDownload();
             });
         };
-        
-        backgroundImg.onerror = function() {
-            console.warn('배경 이미지 로드 실패, 대안 방법 사용');
+
+        backgroundImg.onerror = function () {
+            console.warn('배경 이미지 로드 실패 → fallback 사용');
             fallbackDownload();
         };
-        
-        // 배경 이미지 로드 시작
-        backgroundImg.src = './back.jpg';
-        
-        // 대안 다운로드 함수
+
+        // 대안 저장 함수 (카드만)
         function fallbackDownload() {
-            // 저장 모드 해제
             resultContainer.classList.remove('saving-mode');
             buttonContainer.style.display = '';
-            
-            // 대안 방법: 카드만 저장
+
             const card = document.getElementById('verseCard');
             html2canvas(card, {
                 backgroundColor: '#ffffff',
                 scale: 2,
-                logging: false,
                 useCORS: true
             }).then(canvas => {
                 const link = document.createElement('a');
@@ -107,5 +96,6 @@ function downloadImage() {
                 link.click();
             });
         }
-    }, 100);
+    }, 200);
 }
+
