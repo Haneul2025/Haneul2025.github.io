@@ -75,7 +75,7 @@ body {
 .bible-reference {
     display: block;
     font-size: clamp(10px, 1.8vw, 16px); /* 더 작게 */
-    margin-top: 4px;
+    margin-top: 0px;
     color: #666;
     text-align: center;
     letter-spacing: 1px;
@@ -498,7 +498,7 @@ body {
     .bible-reference {
         font-size: 11px;
     }
-    
+
     .result-card {
         padding: 25px 15px;
     }
