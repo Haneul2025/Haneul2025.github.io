@@ -303,7 +303,11 @@ body {
     text-align: center;
     margin: clamp(20px, 4vw, 40px) 0;
     font-weight: 300;
+
+    white-space: pre-line;  /* HTML의 <br> 또는 문자열의 \n을 줄바꿈으로 반영 */
+    word-break: keep-all;   /* 단어 단위 줄바꿈 (한국어/영문 섞여도 자연스럽게) */
 }
+
 
 .verse-reference {
     text-align: center;
