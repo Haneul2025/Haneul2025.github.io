@@ -54,7 +54,7 @@ body {
 
 .main-subtitle {
     font-family: "grandiflora-one", "Noto Serif KR", serif;
-    font-size: clamp(20px, 3vw, 32px);
+    font-size: clamp(30px, 3vw, 42px);
     color: rgba(12, 68, 59, 1);
     font-weight: 300;
     letter-spacing: clamp(2px, 1vw, 8px);
