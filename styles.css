@@ -310,13 +310,20 @@ body {
 
 .result-title {
     font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-align: center;
+
+    /* ✅ 글자 자체에만 색상 입히기 */
     background: linear-gradient(90deg, #5dc9be, #4a9b92);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 400;
-    letter-spacing: 4px;
+
+    /* ✅ 배경 박스 제거 */
+    background-color: transparent;
 }
+
 
 .verse-content {
     font-size: 22px;
