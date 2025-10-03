@@ -4,14 +4,12 @@
     box-sizing: border-box;
 }
 
+
 body {
-    font-family: "grandiflora-one", sans-serif;
-}
-/* body {
     font-family: 'Noto Serif KR', serif;
     min-height: 100vh;
     overflow-x: hidden;
-} */
+}
 
 .page {
     display: none;
@@ -73,6 +71,7 @@ body {
 
 
 .main-subtitle {
+    font-family: "flirt-script-regular", sans-serif;
     font-size: 28px;
     color: rgba(255,255,255,0.9);
     font-weight: 300;
