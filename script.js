@@ -94,20 +94,27 @@ function autoResizeText(element, maxHeight, minSize = 20, maxSize = 34) {
     }
 }
 
-window.addEventListener("load", () => {
+// 저장 모드 전환 시 호출
+function enableSavingMode() {
     const resultContainer = document.querySelector(".result-container");
     const verse = document.getElementById("verseContent");
     const card = document.getElementById("verseCard");
 
-    if (
-        resultContainer &&
-        resultContainer.classList.contains("saving-mode") &&
-        verse &&
-        card
-    ) {
-        autoResizeText(verse, card.clientHeight * 0.6, 20, 34);
-    }
-});
+    resultContainer.classList.add("saving-mode");
+
+    // 약간의 렌더링 지연 후 실행 (중요!)
+    setTimeout(() => {
+        if (verse && card) {
+            autoResizeText(verse, card.clientHeight * 0.6, 20, 34);
+        }
+    }, 50);
+}
+
+function disableSavingMode() {
+    const resultContainer = document.querySelector(".result-container");
+    resultContainer.classList.remove("saving-mode");
+}
+
 
 
 
