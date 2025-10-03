@@ -5,10 +5,13 @@
 }
 
 body {
+    font-family: "grandiflora-one", sans-serif;
+}
+/* body {
     font-family: 'Noto Serif KR', serif;
     min-height: 100vh;
     overflow-x: hidden;
-}
+} */
 
 .page {
     display: none;
@@ -43,8 +46,10 @@ body {
 }
 
 .main-title {
+    font-family: "flirt-script-regular", sans-serif;
     font-size: 72px;
-    font-weight: 300;
+    font-weight: 400;   /* Regular은 400 */
+    font-style: normal;
     background: linear-gradient(90deg, 
         #ffffff 0%, 
         #fff8dc 15%,
@@ -61,12 +66,11 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 20px;
-    font-style: italic;
     letter-spacing: 2px;
     line-height: 1.2;
     text-shadow: 0 0 30px rgba(255,255,255,0.5);
-    font-family: 'Brush Script MT', cursive;
 }
+
 
 .main-subtitle {
     font-size: 28px;
