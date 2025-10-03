@@ -219,7 +219,7 @@ body {
 .result-container.saving-mode .result-title {
     font-size: 44px;
     letter-spacing: 6px;
-    margin-bottom: 80px;
+    /* margin-bottom: 80px; */
     color: rgba(12, 68, 59, 1);
     line-height: 1.4;
 }
@@ -227,8 +227,8 @@ body {
 .result-container.saving-mode .verse-content {
     font-size: 34px;
     line-height: 2;
-    margin: 100px 0;
-    margin-bottom: 30px;  /* 본문과 절 사이 간격 고정 */
+    margin: 0;                /* 불필요한 전체 여백 제거 */
+    margin-bottom: 30px;      /* 절과의 간격만 고정 */
     font-weight: 400;
     color: #2c2c2c;
 }
