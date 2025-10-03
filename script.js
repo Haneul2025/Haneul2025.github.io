@@ -37,7 +37,7 @@ function downloadImage() {
             buttonContainer.style.display = '';
 
             const link = document.createElement('a');
-            link.download = 'Haneul_2025_말씀카드.png';
+            link.download = '걸음을 향한 말씀.png';
             link.href = canvas.toDataURL('image/png', 1.0);
             link.click();
         });
