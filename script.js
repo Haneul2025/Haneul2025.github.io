@@ -84,6 +84,25 @@ function downloadImage() {
     }, 200);
 }
 
+function autoResizeText(element, maxHeight) {
+    let fontSize = parseInt(window.getComputedStyle(element).fontSize);
+    while (element.scrollHeight > maxHeight && fontSize > 12) {
+        fontSize--;
+        element.style.fontSize = fontSize + "px";
+    }
+}
+
+// 저장 모드 카드가 로드된 뒤 실행
+window.addEventListener("load", () => {
+    const verse = document.getElementById("verseContent");
+    const card = document.getElementById("verseCard");
+
+    if (verse && card) {
+        autoResizeText(verse, card.clientHeight * 0.6); 
+        // 카드 높이의 60% 안에 들어오도록 줄임
+    }
+});
+
 
 // // 이미지 다운로드 함수
 // function downloadImage() {
