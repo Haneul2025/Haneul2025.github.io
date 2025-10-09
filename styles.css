@@ -75,7 +75,7 @@ body {
 }
 
 .main-subtitle {
-    font-family: "grandiflora-one", 'GungnipClassic', serif;
+    font-family: 'GungnipClassic', serif;    
     font-size: clamp(30px, 3vw, 42px);
     color: rgba(12, 68, 59, 1);
     font-weight: 300;
