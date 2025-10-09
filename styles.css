@@ -1,3 +1,25 @@
+/* OTF 폰트 정의 */
+@font-face {
+    font-family: 'GungnipClassic';
+    src: url('./OTF/국립박물관문화재단클래식L.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GungnipClassic';
+    src: url('./OTF/국립박물관문화재단클래식M.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GungnipClassic';
+    src: url('./OTF/국립박물관문화재단클래식B.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -53,7 +75,7 @@ body {
 }
 
 .main-subtitle {
-    font-family: "grandiflora-one", "Noto Serif KR", serif;
+    font-family: "grandiflora-one", 'GungnipClassic', serif;
     font-size: clamp(30px, 3vw, 42px);
     color: rgba(12, 68, 59, 1);
     font-weight: 300;
@@ -239,6 +261,7 @@ body {
 }
 
 .result-container.saving-mode .result-title {
+    font-family: 'GungnipClassic', serif;
     font-size: 44px;
     letter-spacing: 6px;
     /* margin-bottom: 80px; */
@@ -317,7 +340,7 @@ body {
     /* color: #5dc9be; */
     color: rgba(12, 68, 59, 1);
     background: none;
-    font-family: "grandiflora-one", "Noto Serif KR", serif;
+    font-family: 'GungnipClassic', serif;
 }
 
 .verse-content {
