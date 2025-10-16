@@ -255,8 +255,6 @@ body {
     font-size: 32px;
     margin-bottom: 20px;
     color: rgba(12, 68, 59, 1);
-
-    /* color: #5dc9be; */
     letter-spacing: 2px;
 }
 
@@ -264,20 +262,22 @@ body {
     font-family: 'GungnipClassic', serif;
     font-size: 44px;
     letter-spacing: 6px;
-    /* margin-bottom: 80px; */
     color: rgba(12, 68, 59, 1);
     line-height: 1.4;
 }
 /* 저장 모드 verse-content */
 .result-container.saving-mode .verse-content {
     font-size: 34px;          /* 최대 크기 (짧은 구절일 때) */
-    line-height: 2;
+    line-height: 1.8;         /* 줄 간격을 약간 줄여서 더 자연스럽게 */
     margin: 0;                
     margin-bottom: 30px;      /* 본문과 절 사이 간격 고정 */
     font-weight: 400;
     color: #2c2c2c;
-    white-space: pre-line;    
-    word-break: keep-all;
+    white-space: pre-line;    /* 줄바꿈을 실제로 반영 */
+    word-break: keep-all;     /* 단어 단위로 줄바꿈 */
+    text-align: center;       /* 가운데 정렬 */
+    max-width: 100%;          /* 최대 너비 제한 */
+    padding: 0 20px;          /* 좌우 여백 추가 */
 }
 
 
@@ -325,7 +325,6 @@ body {
 
 .result-year {
     font-size: clamp(14px, 2vw, 18px);
-    /* color: #5dc9be; */
     color: rgba(12, 68, 59, 1);
     font-weight: 300;
     letter-spacing: 2px;
@@ -337,7 +336,6 @@ body {
     font-weight: 400;
     letter-spacing: clamp(2px, 0.5vw, 4px);
     text-align: center;
-    /* color: #5dc9be; */
     color: rgba(12, 68, 59, 1);
     background: none;
     font-family: 'GungnipClassic', serif;
@@ -350,9 +348,10 @@ body {
     text-align: center;
     margin: clamp(20px, 4vw, 40px) 0;
     font-weight: 300;
-
     white-space: pre-line;  /* HTML의 <br> 또는 문자열의 \n을 줄바꿈으로 반영 */
     word-break: keep-all;   /* 단어 단위 줄바꿈 (한국어/영문 섞여도 자연스럽게) */
+    max-width: 100%;        /* 최대 너비 제한 */
+    padding: 0 10px;        /* 좌우 여백 추가 */
 }
 
 
