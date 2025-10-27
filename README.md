@@ -260,7 +260,6 @@ const index = order[ptr];
 ## 🔧 개발 정보
 
 - **개발자**: Haneul2025
-- **라이선스**: MIT License
 - **호스팅**: GitHub Pages
 - **최종 업데이트**: 2025년
 
