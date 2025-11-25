@@ -191,7 +191,7 @@
 .button-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: clamp(12px, 2vw, 20px);
     max-width: 600px;
     width: 90%;
     z-index: 10;
@@ -199,7 +199,7 @@
 
 .button-row {
     display: flex;
-    gap: 20px;
+    gap: clamp(12px, 2vw, 20px);
     width: 100%;
 }
 
@@ -250,11 +250,11 @@
     }
     
     .button-row {
-        gap: 15px;
+        gap: clamp(12px, 2vw, 18px);
     }
     
     .button-container {
-        gap: 12px;
+        gap: clamp(12px, 2vw, 18px);
     }
 }
 
@@ -266,7 +266,7 @@
     
     .button-row {
         flex-direction: column;
-        gap: 12px;
+        gap: clamp(10px, 2vw, 15px);
     }
     
     .result-button {
@@ -274,7 +274,7 @@
     }
     
     .button-container {
-        gap: 12px;
+        gap: clamp(10px, 2vw, 15px);
     }
 }
 
@@ -300,11 +300,11 @@
     
     .button-container {
         width: 95%;
-        gap: 10px;
+        gap: clamp(10px, 2vw, 15px);
     }
     
     .button-row {
-        gap: 10px;
+        gap: clamp(10px, 2vw, 15px);
     }
 }
 
@@ -316,6 +316,14 @@
     
     .verse-content {
         line-height: 1.6;
+    }
+    
+    .button-container {
+        gap: 10px;
+    }
+    
+    .button-row {
+        gap: 10px;
     }
 }
 
