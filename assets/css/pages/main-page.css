@@ -1,7 +1,7 @@
 /* 메인 페이지 */
 .main-container {
     min-height: 100vh;
-    background-image: url('../../assets/images/back.jpg');
+    background-image: url('../../images/back.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

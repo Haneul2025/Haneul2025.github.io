@@ -42,3 +42,4 @@ function getNextVerseIndex() {
     return index;
 }
 
+

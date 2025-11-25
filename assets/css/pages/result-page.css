@@ -1,7 +1,7 @@
 /* 결과 페이지 */
 .result-container {
     min-height: 100vh;
-    background-image: url('../../assets/images/back.jpg');
+    background-image: url('../../images/back.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background: url('../../assets/images/back.jpg') no-repeat center/cover;
+    background: url('../../images/back.jpg') no-repeat center/cover;
     padding-top: 220px;
 }
 
