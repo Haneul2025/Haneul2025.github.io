@@ -18,9 +18,9 @@
 ## 🛠 기술 스택
 
 ### Frontend
-- **HTML5**: 시맨틱 마크업
-- **CSS3**: 반응형 디자인, 애니메이션
-- **Vanilla JavaScript**: 순수 자바스크립트로 구현
+- **HTML5**: 시맨틱 마크업, 페이지별 분리 구조
+- **CSS3**: 모듈화된 스타일시트, 반응형 디자인, 애니메이션
+- **Vanilla JavaScript**: 모듈화된 순수 자바스크립트
 
 ### 외부 라이브러리
 - **html2canvas**: 이미지 생성 및 다운로드
@@ -35,17 +35,36 @@
 
 ```
 Haneul2025.github.io/
-├── index.html          # 메인 HTML 파일
-├── styles.css          # 스타일시트
-├── script.js           # 메인 JavaScript 로직
-├── data.js             # 성경 구절 데이터 (4,800+ 구절)
-├── HaneulLogo.png      # 로고 이미지
-├── back.jpg            # 배경 이미지
-├── OTF/                # 폰트 파일
-│   ├── 국립박물관문화재단클래식B.otf
-│   ├── 국립박물관문화재단클래식L.otf
-│   └── 국립박물관문화재단클래식M.otf
-└── README.md           # 프로젝트 문서
+├── index.html                    # 메인 페이지
+├── pages/
+│   ├── loading.html              # 로딩 페이지
+│   └── result.html               # 결과 페이지
+├── assets/
+│   ├── css/
+│   │   ├── main.css              # 공통 스타일 (폰트 정의 포함)
+│   │   └── pages/
+│   │       ├── main-page.css     # 메인 페이지 스타일
+│   │       ├── loading-page.css  # 로딩 페이지 스타일
+│   │       └── result-page.css   # 결과 페이지 스타일
+│   ├── js/
+│   │   ├── utils/
+│   │   │   ├── verse-formatter.js    # 구절 포맷팅 로직
+│   │   │   ├── verse-selector.js    # 랜덤 선택 로직
+│   │   │   └── image-downloader.js   # 이미지 다운로드 로직
+│   │   └── pages/
+│   │       ├── loading-page.js   # 로딩 페이지 로직
+│   │       └── result-page.js   # 결과 페이지 로직
+│   ├── images/
+│   │   ├── back.jpg              # 배경 이미지
+│   │   └── HaneulLogo.png        # 로고 이미지
+│   └── fonts/
+│       └── OTF/
+│           ├── 국립박물관문화재단클래식B.otf
+│           ├── 국립박물관문화재단클래식L.otf
+│           └── 국립박물관문화재단클래식M.otf
+├── data.js                       # 성경 구절 데이터 (4,800+ 구절)
+├── README.md                     # 프로젝트 문서
+└── FILE_STRUCTURE.md            # 파일 구조 상세 문서
 ```
 
 ## 🎯 핵심 알고리즘
@@ -74,10 +93,9 @@ const verses = [
 ```
 
 ### 주요 함수들
-- `formatVerseForCard()`: 의미 기반 텍스트 포맷팅
-- `getNextVerseIndex()`: 중복 없는 랜덤 선택
-- `downloadImage()`: 이미지 생성 및 다운로드
-- `startLoading()`: 페이지 전환 및 로딩 처리
+- `formatVerseForCard()`: 의미 기반 텍스트 포맷팅 (`assets/js/utils/verse-formatter.js`)
+- `getNextVerseIndex()`: 중복 없는 랜덤 선택 (`assets/js/utils/verse-selector.js`)
+- `downloadImage()`: 이미지 생성 및 다운로드 (`assets/js/utils/image-downloader.js`)
 
 ## 🚀 빠른 시작
 
@@ -137,32 +155,36 @@ http://localhost:8000
 
 ### 코드 구조 분석
 
-#### 1. 메인 HTML (index.html)
-```html
-<!-- 3개 페이지 구조 -->
-<div id="mainPage">     <!-- 시작 페이지 -->
-<div id="loadingPage">  <!-- 로딩 페이지 -->
-<div id="resultPage">   <!-- 결과 페이지 -->
-```
+#### 1. 페이지 구조
+프로젝트는 3개의 독립적인 HTML 페이지로 구성되어 있습니다:
+- **`index.html`**: 메인 페이지 (시작 화면)
+- **`pages/loading.html`**: 로딩 페이지 (구절 선택 중)
+- **`pages/result.html`**: 결과 페이지 (선택된 구절 표시)
 
-#### 2. 스타일시트 (styles.css)
-- **반응형 디자인**: 모바일 퍼스트 접근
-- **CSS Grid & Flexbox**: 레이아웃 구성
-- **애니메이션**: CSS transitions와 keyframes 활용
+#### 2. 스타일시트 구조
+모듈화된 CSS 파일 구조:
+- **`assets/css/main.css`**: 공통 스타일 및 폰트 정의
+- **`assets/css/pages/main-page.css`**: 메인 페이지 전용 스타일
+- **`assets/css/pages/loading-page.css`**: 로딩 페이지 전용 스타일
+- **`assets/css/pages/result-page.css`**: 결과 페이지 전용 스타일
 
-#### 3. 데이터 관리 (data.js)
+#### 3. JavaScript 모듈 구조
+기능별로 분리된 JavaScript 파일:
+- **`assets/js/utils/verse-formatter.js`**: 의미 기반 줄바꿈 알고리즘
+- **`assets/js/utils/verse-selector.js`**: 랜덤 선택 로직
+- **`assets/js/utils/image-downloader.js`**: 이미지 다운로드 기능
+- **`assets/js/pages/loading-page.js`**: 로딩 페이지 로직
+- **`assets/js/pages/result-page.js`**: 결과 페이지 로직
+
+#### 4. 데이터 관리 (data.js)
 - **4,800+ 성경 구절**: JSON 배열 형태
 - **구조**: `{content: "구절", reference: "출처"}`
-
-#### 4. 핵심 로직 (script.js)
-- **의미 기반 줄바꿈**: `formatVerseForCard()` 함수
-- **랜덤 선택**: `getNextVerseIndex()` 함수
-- **이미지 생성**: `downloadImage()` 함수
 
 ### 주요 함수 상세
 
 #### `formatVerseForCard(text, maxLength)`
 ```javascript
+// assets/js/utils/verse-formatter.js
 // 의미 단위 분해 → 유사도 계산 → 자연스러운 줄바꿈
 const clauses = parseSemanticClauses(cleanText);
 const semanticBreaks = detectSemanticShifts(clauses);
@@ -171,6 +193,7 @@ const lines = optimizeNaturalBreaks(clauses, semanticBreaks, maxLength);
 
 #### `getNextVerseIndex()`
 ```javascript
+// assets/js/utils/verse-selector.js
 // Fisher-Yates 셔플 + localStorage 중복 방지
 const order = generateShuffledIndices(verses.length);
 const index = order[ptr];
@@ -189,26 +212,30 @@ const index = order[ptr];
 
 #### 2. 디자인 수정
 ```css
-/* styles.css에서 색상 변경 */
-:root {
-    --primary-color: #your-color;
-    --secondary-color: #your-color;
+/* assets/css/pages/해당-페이지.css에서 색상 변경 */
+.main-title {
+    color: #your-color;
 }
 ```
 
 #### 3. 폰트 변경
 ```css
-/* Google Fonts 또는 로컬 폰트 사용 */
+/* assets/css/main.css에서 폰트 정의 수정 */
 @font-face {
     font-family: 'YourFont';
-    src: url('./fonts/your-font.otf');
+    src: url('../fonts/your-font.otf');
 }
 ```
+
+#### 4. 페이지별 스타일 수정
+- 메인 페이지: `assets/css/pages/main-page.css`
+- 로딩 페이지: `assets/css/pages/loading-page.css`
+- 결과 페이지: `assets/css/pages/result-page.css`
 
 ### 성능 최적화
 
 - **캐싱**: `FORMATTING_CACHE`로 포맷팅 결과 저장
-- **지연 로딩**: 필요시에만 리소스 로드
+- **모듈화**: 필요한 파일만 로드하여 초기 로딩 시간 단축
 - **압축**: 이미지와 폰트 파일 최적화
 
 ### 브라우저 호환성
@@ -223,6 +250,7 @@ const index = order[ptr];
 1. **콘솔 로그**: `console.log`로 포맷팅 과정 확인
 2. **개발자 도구**: Network 탭에서 리소스 로딩 확인
 3. **모바일 테스트**: Chrome DevTools Device Mode 활용
+4. **페이지별 디버깅**: 각 페이지의 JavaScript 파일을 개별적으로 확인
 
 ## 🛠 개발 환경
 
@@ -241,11 +269,13 @@ const index = order[ptr];
 1. **로컬 테스트**: `python -m http.server 8000`
 2. **모바일 테스트**: 실제 기기 또는 DevTools
 3. **크로스 브라우저**: 여러 브라우저에서 확인
+4. **페이지 전환 테스트**: 각 페이지 간 네비게이션 확인
 
 ## 📋 체크리스트
 
 ### 배포 전 확인사항
-- [ ] 모든 기능 정상 작동
+- [ ] 모든 페이지 정상 작동
+- [ ] 페이지 간 네비게이션 확인
 - [ ] 모바일 반응형 확인
 - [ ] 이미지 다운로드 테스트
 - [ ] 구절 포맷팅 품질 확인
@@ -256,12 +286,24 @@ const index = order[ptr];
 - [ ] 함수 주석 작성
 - [ ] 에러 처리 구현
 - [ ] 성능 최적화
+- [ ] 모듈화 구조 준수
+
+## 🔄 리팩토링 정보
+
+이 프로젝트는 2025년에 완전히 리팩토링되었습니다:
+
+- ✅ **페이지 분리**: 단일 HTML에서 3개의 독립적인 페이지로 분리
+- ✅ **CSS 모듈화**: 공통/페이지별 스타일로 분리
+- ✅ **JavaScript 모듈화**: 기능별 유틸리티와 페이지별 로직으로 분리
+- ✅ **리소스 정리**: 이미지와 폰트를 assets 폴더로 체계화
+- ✅ **유지보수성 향상**: 각 파일의 역할이 명확하게 분리됨
 
 ## 🔧 개발 정보
 
 - **개발자**: Haneul2025
 - **호스팅**: GitHub Pages
 - **최종 업데이트**: 2025년
+- **리팩토링 완료**: 2025년
 
 ## 📞 문의
 
@@ -270,4 +312,3 @@ const index = order[ptr];
 ---
 
 *"하나님의 말씀으로 시작하는 아름다운 하루를 만들어가세요"*
-

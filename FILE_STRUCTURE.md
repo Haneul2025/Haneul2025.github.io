@@ -1,36 +1,101 @@
 # 프로젝트 파일 구조
 
-이 프로젝트는 관리하기 쉽도록 다음과 같이 파일들이 분리되어 있습니다:
+이 프로젝트는 관리하기 쉽도록 다음과 같이 파일들이 체계적으로 분리되어 있습니다:
 
-## 파일 설명
+## 📁 프로젝트 구조
 
-### `index.html`
-- 메인 HTML 구조
-- 3개의 페이지 섹션 포함: 메인, 로딩, 결과 페이지
-- 외부 CSS와 JavaScript 파일들을 링크
+```
+Haneul2025.github.io/
+├── index.html                    # 메인 페이지
+├── pages/
+│   ├── loading.html              # 로딩 페이지
+│   └── result.html               # 결과 페이지
+├── assets/
+│   ├── css/
+│   │   ├── main.css              # 공통 스타일 (폰트 정의 포함)
+│   │   └── pages/
+│   │       ├── main-page.css     # 메인 페이지 스타일
+│   │       ├── loading-page.css  # 로딩 페이지 스타일
+│   │       └── result-page.css   # 결과 페이지 스타일
+│   ├── js/
+│   │   ├── utils/
+│   │   │   ├── verse-formatter.js    # 구절 포맷팅 로직
+│   │   │   ├── verse-selector.js    # 랜덤 선택 로직
+│   │   │   └── image-downloader.js   # 이미지 다운로드 로직
+│   │   └── pages/
+│   │       ├── loading-page.js   # 로딩 페이지 로직
+│   │       └── result-page.js   # 결과 페이지 로직
+│   ├── images/
+│   │   ├── back.jpg              # 배경 이미지
+│   │   └── HaneulLogo.png        # 로고 이미지
+│   └── fonts/
+│       └── OTF/
+│           ├── 국립박물관문화재단클래식L.otf
+│           ├── 국립박물관문화재단클래식M.otf
+│           └── 국립박물관문화재단클래식B.otf
+├── data.js                       # 성경 구절 데이터
+├── README.md                     # 프로젝트 문서
+└── FILE_STRUCTURE.md            # 이 파일
+```
 
-### `styles.css`
-- 모든 CSS 스타일 정의
-- 반응형 디자인 포함
-- 메인, 로딩, 결과 페이지의 모든 스타일
+## 📄 파일 설명
 
-### `script.js`
-- 페이지 전환 로직
-- 로딩 및 랜덤 구절 선택 기능
-- 이미지 다운로드 기능
+### HTML 파일
+- **`index.html`**: 메인 페이지 (시작 화면)
+- **`pages/loading.html`**: 로딩 페이지 (구절 선택 중)
+- **`pages/result.html`**: 결과 페이지 (선택된 구절 표시)
 
-### `data.js`
-- 성경 구절 데이터 배열
-- 새로운 구절 추가 시 이 파일만 수정하면 됨
+### CSS 파일
+- **`assets/css/main.css`**: 공통 스타일 및 폰트 정의
+- **`assets/css/pages/main-page.css`**: 메인 페이지 전용 스타일
+- **`assets/css/pages/loading-page.css`**: 로딩 페이지 전용 스타일
+- **`assets/css/pages/result-page.css`**: 결과 페이지 전용 스타일
 
-### `back.jpg`
-- 전체 페이지의 배경 이미지
-- 메인, 로딩, 결과 페이지 모든 배경에 적용
+### JavaScript 파일
+- **`assets/js/utils/verse-formatter.js`**: 구절 포맷팅 알고리즘
+- **`assets/js/utils/verse-selector.js`**: 랜덤 구절 선택 로직
+- **`assets/js/utils/image-downloader.js`**: 이미지 다운로드 기능
+- **`assets/js/pages/loading-page.js`**: 로딩 페이지 로직
+- **`assets/js/pages/result-page.js`**: 결과 페이지 로직
 
-## 개발 시 주의사항
+### 데이터 파일
+- **`data.js`**: 성경 구절 데이터 배열 (4,800+ 구절)
 
-- 새로운 구절 추가: `data.js` 파일의 `verses` 배열에 추가
-- 스타일 수정: `styles.css` 파일에서 해당 클래스 수정
-- 기능 추가: `script.js` 파일에 새로운 함수 추가
-- HTML 구조 변경: `index.html` 파일에서 수정
-- 배경 이미지 변경: `back.jpg` 파일을 교체하거나 `styles.css`에서 파일명 수정
+### 리소스 파일
+- **`assets/images/back.jpg`**: 전체 페이지 배경 이미지
+- **`assets/images/HaneulLogo.png`**: 로고 이미지
+- **`assets/fonts/OTF/`**: 폰트 파일들
+
+## 🔧 개발 시 주의사항
+
+### 새로운 구절 추가
+- `data.js` 파일의 `verses` 배열에 추가
+
+### 스타일 수정
+- 페이지별 스타일: `assets/css/pages/` 폴더의 해당 파일 수정
+- 공통 스타일: `assets/css/main.css` 파일 수정
+
+### 기능 추가
+- 유틸리티 함수: `assets/js/utils/` 폴더에 새 파일 추가
+- 페이지별 로직: `assets/js/pages/` 폴더의 해당 파일 수정
+
+### HTML 구조 변경
+- 각 페이지의 HTML 파일을 개별적으로 수정
+
+### 이미지/폰트 변경
+- 이미지: `assets/images/` 폴더에 파일 추가/교체
+- 폰트: `assets/fonts/` 폴더에 파일 추가/교체 후 `main.css`에서 경로 수정
+
+## 📝 페이지 간 네비게이션
+
+1. **메인 → 로딩**: `window.location.href='pages/loading.html'`
+2. **로딩 → 결과**: URL 파라미터로 구절 정보 전달
+3. **결과 → 로딩**: "다시 뽑기" 버튼 클릭
+
+## ✨ 리팩토링 완료
+
+- ✅ 페이지를 3개의 독립적인 HTML 파일로 분리
+- ✅ CSS를 공통/페이지별로 모듈화
+- ✅ JavaScript를 기능별로 모듈화
+- ✅ 이미지와 폰트를 assets 폴더로 정리
+- ✅ 깔끔하고 유지보수하기 쉬운 구조 완성

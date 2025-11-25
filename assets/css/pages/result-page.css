@@ -1,0 +1,297 @@
+/* 결과 페이지 */
+.result-container {
+    min-height: 100vh;
+    background-image: url('../../assets/images/back.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+}
+
+.result-card {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: clamp(30px, 5vw, 60px) clamp(25px, 4vw, 50px);
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+    margin-bottom: 40px;
+}
+
+/* 이미지 저장을 위한 스타일 - 1080x1920 세로형 고정 (저장용) */
+.result-container.saving-mode {
+    width: 1080px;
+    height: 1920px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: url('../../assets/images/back.jpg') no-repeat center/cover;
+    padding-top: 220px;
+}
+
+.result-container.saving-mode .result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 100px 70px;
+    width: 720px;
+    min-height: 1100px;
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    margin: 0 auto 200px;
+    z-index: 10;
+}
+
+.result-container.saving-mode .result-header {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* 중앙(content: 말씀/절) */
+.result-container.saving-mode .verse-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.result-container.saving-mode .result-year {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: rgba(12, 68, 59, 1);
+    letter-spacing: 2px;
+}
+
+.result-container.saving-mode .result-title {
+    font-family: 'GungnipClassic', serif;
+    font-size: 44px;
+    letter-spacing: 6px;
+    color: rgba(12, 68, 59, 1);
+    line-height: 1.4;
+}
+
+/* 저장 모드 verse-content */
+.result-container.saving-mode .verse-content {
+    font-size: 34px;
+    line-height: 1.8;
+    margin: 0;
+    margin-bottom: 30px;
+    font-weight: 400;
+    color: #2c2c2c;
+    white-space: pre-line;
+    word-break: keep-all;
+    text-align: center;
+    max-width: 100%;
+    padding: 0 20px;
+}
+
+.result-container.saving-mode .verse-reference {
+    font-size: 26px;
+    margin-top: 0px;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+.haneul-logo {
+    display: none;
+}
+
+.result-container.saving-mode .haneul-logo {
+    display: block !important;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: auto;
+    z-index: 20;
+}
+
+.result-container.saving-mode .result-logo {
+    align-self: center;
+    margin-bottom: 40px;
+    font-size: 22px;
+    opacity: 0.5;
+    color: #999;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.result-container.saving-mode .button-container {
+    display: none !important;
+}
+
+.result-header {
+    text-align: center;
+    margin-bottom: clamp(20px, 4vw, 40px);
+}
+
+.result-year {
+    font-size: clamp(14px, 2vw, 18px);
+    color: rgba(12, 68, 59, 1);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.result-title {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 400;
+    letter-spacing: clamp(2px, 0.5vw, 4px);
+    text-align: center;
+    color: rgba(12, 68, 59, 1);
+    background: none;
+    font-family: 'GungnipClassic', serif;
+}
+
+.verse-content {
+    font-size: clamp(16px, 2.5vw, 20px);
+    line-height: clamp(1.6, 0.2vw + 1.5, 2);
+    color: #333;
+    text-align: center;
+    margin: clamp(20px, 4vw, 40px) 0;
+    font-weight: 300;
+    white-space: pre-line;
+    word-break: keep-all;
+    max-width: 100%;
+    padding: 0 10px;
+}
+
+.verse-reference {
+    text-align: center;
+    font-size: clamp(14px, 2vw, 16px);
+    color: #666;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.result-logo {
+    text-align: center;
+    margin-top: clamp(20px, 4vw, 40px);
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: #999;
+    letter-spacing: 2px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    max-width: 600px;
+    width: 90%;
+    z-index: 10;
+}
+
+.result-button {
+    flex: 1;
+    padding: clamp(14px, 2vw, 18px) clamp(20px, 3vw, 30px);
+    background: rgba(255,255,255,0.3);
+    border: 2px solid rgba(12, 68, 59, 0.4);
+    color: rgba(12, 68, 59, 1);
+    font-size: clamp(14px, 2vw, 16px);
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.result-button:hover {
+    background: rgba(12, 68, 59, 0.12);
+    border-color: rgba(12, 68, 59, 0.6);
+    color: rgba(12, 68, 59, 1);
+    transform: translateY(-2px);
+}
+
+/* 태블릿 가로 */
+@media (max-width: 1024px) {
+    .result-card {
+        padding: 40px 35px;
+    }
+}
+
+/* 태블릿 세로 */
+@media (max-width: 768px) {
+    .result-container {
+        background-attachment: scroll;
+    }
+    
+    .result-card {
+        padding: 35px 25px;
+        border-radius: 20px;
+    }
+    
+    .button-container {
+        gap: 15px;
+    }
+}
+
+/* 대형 모바일 */
+@media (max-width: 640px) {
+    .result-container {
+        padding: 30px 15px;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .result-button {
+        width: 100%;
+    }
+}
+
+/* 소형 모바일 */
+@media (max-width: 480px) {
+    .result-container {
+        padding: 20px 10px;
+    }
+    
+    .result-card {
+        padding: 30px 20px;
+        border-radius: 15px;
+        width: 95%;
+    }
+    
+    .result-header {
+        margin-bottom: 20px;
+    }
+    
+    .verse-content {
+        margin: 20px 0;
+    }
+    
+    .button-container {
+        width: 95%;
+        gap: 10px;
+    }
+}
+
+/* 초소형 모바일 */
+@media (max-width: 360px) {
+    .result-card {
+        padding: 25px 15px;
+    }
+    
+    .verse-content {
+        line-height: 1.6;
+    }
+}
+
