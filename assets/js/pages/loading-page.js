@@ -2,10 +2,19 @@
  * 로딩 페이지 로직
  * - 구절 선택 및 포맷팅
  * - 결과 페이지로 리다이렉트
+ * - 뒤로가기 방지
  */
 
 // 페이지 로드 시 자동 실행
 document.addEventListener('DOMContentLoaded', function() {
+    // 뒤로가기 방지: 히스토리 조작
+    history.pushState(null, null, location.href);
+    
+    // 뒤로가기 시 현재 페이지로 다시 이동
+    window.addEventListener('popstate', function(event) {
+        history.pushState(null, null, location.href);
+    });
+    
     // 로딩 시간을 고려한 대기
     setTimeout(() => {
         const randomVerse = verses[getNextVerseIndex()];

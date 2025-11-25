@@ -1,21 +1,21 @@
 /* OTF 폰트 정의 */
 @font-face {
     font-family: 'GungnipClassic';
-    src: url('../fonts/OTF/국립박물관문화재단클래식L.otf') format('opentype');
+    src: url('/assets/fonts/OTF/국립박물관문화재단클래식L.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'GungnipClassic';
-    src: url('../fonts/OTF/국립박물관문화재단클래식M.otf') format('opentype');
+    src: url('/assets/fonts/OTF/국립박물관문화재단클래식M.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'GungnipClassic';
-    src: url('../fonts/OTF/국립박물관문화재단클래식B.otf') format('opentype');
+    src: url('/assets/fonts/OTF/국립박물관문화재단클래식B.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
 }

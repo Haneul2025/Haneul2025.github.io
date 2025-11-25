@@ -1,7 +1,7 @@
 /* 로딩 페이지 */
 .loading-container {
     min-height: 100vh;
-    background-image: url('../../images/back.jpg');
+    background-image: url('/assets/images/back.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
