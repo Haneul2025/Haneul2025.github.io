@@ -190,10 +190,22 @@
 
 .button-container {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 15px;
     max-width: 600px;
     width: 90%;
     z-index: 10;
+}
+
+.button-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.home-button {
+    width: 100%;
+    flex: none;
 }
 
 .result-button {
@@ -237,8 +249,12 @@
         border-radius: 20px;
     }
     
-    .button-container {
+    .button-row {
         gap: 15px;
+    }
+    
+    .button-container {
+        gap: 12px;
     }
 }
 
@@ -248,13 +264,17 @@
         padding: 30px 15px;
     }
     
-    .button-container {
+    .button-row {
         flex-direction: column;
         gap: 12px;
     }
     
     .result-button {
         width: 100%;
+    }
+    
+    .button-container {
+        gap: 12px;
     }
 }
 
@@ -280,6 +300,10 @@
     
     .button-container {
         width: 95%;
+        gap: 10px;
+    }
+    
+    .button-row {
         gap: 10px;
     }
 }
